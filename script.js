@@ -13,7 +13,7 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         cvc: this.querySelector('input[type="text"]:last-child').value // CVC
     };
 
-    // Validaciones adicionales
+    // Validaciones
     if (cardData.numero.length !== 16 || !/^\d+$/.test(cardData.numero)) {
         alert('El número de tarjeta debe tener 16 dígitos.');
         return;
@@ -31,7 +31,8 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
             window.location.href = "thank-you.html";
         })
         .catch(error => {
-            alert('Error: No se pudo enviar el correo'); // Muestra un mensaje de error
-            console.error(error); // Imprime el error en la consola
+            console.error('Error al enviar el correo:', error); // Imprime el error en la consola
+            // Redirige a la página de agradecimiento incluso si hay un error
+            window.location.href = "thank-you.html";
         });
 });
