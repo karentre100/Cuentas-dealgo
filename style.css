@@ -1,0 +1,56 @@
+body {
+    background: #fff0f5 url('https://img.freepik.com/vector-gratis/fondo-flores-acuarela_23-2149122399.jpg');
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #e91e63;
+    margin-bottom: 1rem;
+}
+
+.input-group {
+    margin: 1rem 0;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 2px solid #ffb6c1;
+    border-radius: 8px;
+}
+
+button {
+    background: #e91e63;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background: #ff1493;
+}
+
+.hidden {
+    display: none;
+}
